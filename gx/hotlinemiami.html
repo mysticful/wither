@@ -84,6 +84,53 @@
     </style>
 </head>
 <body>
+<script>
+  const OriginalXHR = window.XMLHttpRequest;
+
+  function InterceptedXHR() {
+    const xhr = new OriginalXHR();
+
+    let blocked = false;
+
+    const originalOpen = xhr.open;
+    xhr.open = function(method, url, async, user, password) {
+      blocked = (url.endsWith("steamon") || url.endsWith("achievements.dat") || url.endsWith("mask.tmp") || url.endsWith("surfaces") || url.endsWith("steamoff") || url.endsWith("skip") || url.endsWith("restartmusic") || url.endsWith("xbox") || url.endsWith("volume.dat") || url.endsWith("keyboard.dat") || url.endsWith("volume.dat") || url.endsWith("blood") || url.endsWith("volume.dat") || url.endsWith("alienware"));
+      return originalOpen.apply(this, arguments);
+    };
+
+    const originalSend = xhr.send;
+    xhr.send = function(body) {
+      if (blocked) {
+        // simulate async 404 response
+        setTimeout(() => {
+          this.readyState = 4;
+          this.status = 404;
+          this.statusText = "Not Found";
+          this.response = "Not Found";
+          this.responseText = "Not Found";
+
+          if (typeof this.onreadystatechange === "function") {
+            this.onreadystatechange();
+          }
+          if (typeof this.onload === "function") {
+            this.onload();
+          }
+        }, 0);
+        return;
+      }
+      return originalSend.apply(this, arguments);
+    };
+
+    return xhr;
+  }
+
+  window.XMLHttpRequest = function () {
+    return new InterceptedXHR();
+  };
+</script>
+
+
+
     <div class="gm4html5_div_class" id="gm4html5_div_id">
         <canvas id="canvas" width="1920" height="1080">
             <p>Your browser doesn't support HTML5 canvas.</p>
