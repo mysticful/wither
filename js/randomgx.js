@@ -13,6 +13,8 @@ function funcranGX() {
         "/gx/cuphead.html",
         "/gx/ddlc.html",
         "/gx/deathrun3d.html",
+        "/gx/flappybird.html",
+        "/gx/halflife.html",
         "/gx/hollowknight.html",
         "/gx/hotlinemiami.html",
         "/gx/mariokartds.html",

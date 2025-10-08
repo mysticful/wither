@@ -33,6 +33,7 @@ color: white;
   text-decoration: none;
   display: inline-block;
   margin: 12px 10px 18px 10px;
+  gap: 10px;
 }
 
 #bttn:hover {

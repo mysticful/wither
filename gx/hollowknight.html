@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <div id="loading-text" style="color: white; font-size: 48px; font-family: cursive; text-align: center; margin-top: 20px;"> LOADING... </div>
+    <div id="loading-text" style="color: white; font-size: 48px; font-family: monospace; text-align: center; margin-top: 20px;"> TS LOADING :ROFL: </div>
     <div hidden id="unity-container" class="unity-desktop">
         <canvas id="unity-canvas"></canvas>
         <div id="unity-loading-bar">
@@ -73,7 +73,7 @@
                 chunks.push(value);
                 let mbDone = (loadedBytes / (1024 * 1024)).toFixed(2);
                 let mbTotal = '909.17';
-                loadingText.textContent = `LOADING... ${mbDone} MB / ${mbTotal} MB`;
+                loadingText.textContent = `TS LOADING :ROFL: ${mbDone} MB / ${mbTotal} MB`;
             }
             let fullBuffer = new Uint8Array(received);
             let offset = 0;
