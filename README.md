@@ -10,4 +10,4 @@ wither has been filed under the [MIT License](https://choosealicense.com/license
 Games: [seraph](https://github.com/a456pur/seraph), gn-math, and me! :D
 
 # request a takedown
-email me at lovedrivenbystars@gmail.com
+email me at hi@myst.lat
