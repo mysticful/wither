@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "ace attorney🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤🤤",
         "directed by 21 savage",
         "gatekeep ts :3",
-        "mysticful.github.io",
+        "myst.lat",
 		"what do you think of roleplay?",
 		"i dont like it very much.",
 		"make it bounce!",
