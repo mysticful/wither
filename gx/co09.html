@@ -6,8 +6,8 @@
   <title>Class of '09</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#000" />
-  <base href="https://cdn.jsdelivr.net/gh/mysticful/assets@main/@co09/">
-  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/mysticful/assets/co09/manifest.json">
+  <base href="https://myst.lat/assets/co09/">
+  <link rel="manifest" href="https://myst.lat/assets/co09/manifest.json">
   <link rel="icon" href="icons/icon-72x72.png" sizes="72x72" type="image/png" />
   <link rel="icon" href="icons/icon-96x96.png" sizes="96x96" type="image/png" />
   <link rel="icon" href="icons/icon-128x128.png" sizes="128x128" type="image/png" />
@@ -17,7 +17,7 @@
   <link rel="icon" href="icons/icon-384x384.png" sizes="384x384" type="image/png" />
   <link rel="icon" href="icons/icon-512x512.png" sizes="512x512" type="image/png" />
   <link rel="apple-touch-icon" href="icons/icon-512x512.png" />
-<script src="/js/app.js"></script>
+  <script src="/js/app.js"></script>
   <style>
     html { background: #444; font-family: sans-serif; }
     body, html { overscroll-behavior: none; margin: 0; padding: 0; }
@@ -74,7 +74,7 @@
   <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
   <div id="overlayDiv"></div>
 
-  <img id="presplash" src="https://cdn.jsdelivr.net/gh/mysticful/assets/co09/web-presplash.jpg">
+  <img id="presplash" src="https://myst.lat/assets/co09/web-presplash.jpg">
 
   <div id="ContextContainer">
     <a id="ContextButton">&#8801;</a><br />
@@ -98,25 +98,26 @@
       <input id="inputText" type="text">
     </form>
   </div>
+
   <script>
-   const RENPY_CDN = "https://cdn.jsdelivr.net/gh/mysticful/assets/co09/";
+    const RENPY_CDN = "https://myst.lat/assets/co09/";
 
-window.Module = {
-  locateFile: (path, prefix) => RENPY_CDN + path,
-};
+    window.Module = {
+      locateFile: (path, prefix) => RENPY_CDN + path,
+    };
 
-const origFetch = window.fetch;
-window.fetch = (url, opts) => {
-  if (typeof url === "string" && !url.startsWith("http")) {
-    url = RENPY_CDN + url;
-  }
-  return origFetch(url, opts);
-};
+    const origFetch = window.fetch;
+    window.fetch = (url, opts) => {
+      if (typeof url === "string" && !url.startsWith("http")) {
+        url = RENPY_CDN + url;
+      }
+      return origFetch(url, opts);
+    };
 
-window.gameZipURL = RENPY_CDN + "https://cdn.jsdelivr.net/gh/mysticful/assets/co09/game.zip";
+    window.gameZipURL = RENPY_CDN + "game.zip";
   </script>
 
-  <script src="https://cdn.jsdelivr.net/gh/mysticful/assets/co09/renpy-pre.js"></script>
-  <script async type="text/javascript" src="https://cdn.jsdelivr.net/gh/mysticful/assets/co09/renpy.js"></script>
+  <script src="https://myst.lat/assets/co09/renpy-pre.js"></script>
+  <script async type="text/javascript" src="https://myst.lat/assets/co09/renpy.js"></script>
 </body>
 </html>
