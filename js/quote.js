@@ -37,7 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
 		"I will never, forget what i've done.",
 		"Always pleased to meet new friends!",
 		"ive spent 5 minutes writing nothing but cookie run kingdom and bfdi quotes on the quote.js file somebody save me",
-		"i gently open the door.."
+		"i gently open the door..",
+		"ELLIOT SCHANOK",
+		"815 monique lane phonk",
+		"also use truffled",
+		"also use frogies arcade",
+		"fmhy.net",
+		"shoutout to bog he helped me with class of 09 on the site, thats my twin also"
 	];
 
 	var howmany = tell.length;
