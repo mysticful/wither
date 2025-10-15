@@ -1,5 +1,5 @@
 const searchInput = document.getElementById("gxSearch");
-    const gameLinks = document.querySelectorAll("#bttn-container");
+    const gameLinks = document.querySelectorAll(".bttn");
     searchInput.addEventListener("input", () => {
       const query = searchInput.value.toLowerCase();
       gameLinks.forEach(game => {
