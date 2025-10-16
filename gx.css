@@ -15,7 +15,7 @@ body {
     font-family: Georgia, serif;
 }
 
-.bttn2 {
+.bttn {
     width: 200px;
     border: 1px solid #370909;
     border-radius: 5px;
@@ -32,7 +32,7 @@ body {
     text-decoration: none;
 }
 
-.bttn2:hover {
+.bttn:hover {
   transform: scale(1.06);
 }
 
@@ -45,7 +45,7 @@ body {
 text-align: center;
   }
 
-#bttn {
+.bttn2 {
  font-family: monospace;
   font-size: 16px;
   color: white;
@@ -60,7 +60,7 @@ text-align: center;
   margin: 10px;
 }
 
-#bttn:hover {
+.bttn2:hover {
   color: white;
   box-shadow: 0 0 16px #ffb6c1;
   transform: scale(1.06);
