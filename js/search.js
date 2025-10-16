@@ -3,7 +3,7 @@ const searchInput = document.getElementById("gxSearch");
     searchInput.addEventListener("input", () => {
       const query = searchInput.value.toLowerCase();
       gameLinks.forEach(game => {
-        const alt = game.querySelector("img").alt.toLowerCase();
+        const alt = game.querySelector("div.bttn").alt.toLowerCase();
         game.style.display = alt.includes(query) ? "inline-block" : "none";
       });
     });

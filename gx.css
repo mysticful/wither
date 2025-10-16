@@ -11,11 +11,11 @@ body {
       color: #ff88dd;
       font-family: "Georgia", serif;
       text-shadow: 0 0 8px #ff80c0;
-    text-decoration: underline;
     font-size: 41px;
+    font-family: Georgia, serif;
 }
 
-.bttn {
+.bttn2 {
     width: 200px;
     border: 1px solid #370909;
     border-radius: 5px;
@@ -32,7 +32,7 @@ body {
     text-decoration: none;
 }
 
-.bttn:hover {
+.bttn2:hover {
   transform: scale(1.06);
 }
 
@@ -81,11 +81,10 @@ img {
 }
 
 input {
-  background: #ff00f2;
+  background: #bf1c5b;
   color: white;
   width: 400px;
   max-width: 90vw;
-  border: 2px solid #170509;
   padding: 10px;
   border-radius: 20px;
   outline: none;
