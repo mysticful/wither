@@ -29,7 +29,11 @@ function funcranGX() {
         "/gx/sm64.html",
         "/gx/ULTRAKILL.html",
         "/gx/webfishing.html",
-        "/gx/yandsim.html"
+        "/gx/yandsim.html",
+        "/gx/2048.html",
+        "/gx/blockblast.html",
+        "/gx/amongus.html",
+        "/gx/bloxorz.html"
       ];
       const random = gx[Math.floor(Math.random() * gx.length)];
       window.location.href = random;

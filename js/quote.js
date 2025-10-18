@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		"also use truffled",
 		"also use frogies arcade",
 		"fmhy.net",
-		"shoutout to bog he helped me with class of 09 on the site, thats my twin also"
+		"shoutout to bog he helped me with class of 09 on the site, thats my twin also",
+		"(715) 390-0424"
 	];
 
 	var howmany = tell.length;
