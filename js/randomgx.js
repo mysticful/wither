@@ -34,8 +34,12 @@ function funcranGX() {
         "/gx/blockblast.html",
         "/gx/amongus.html",
         "/gx/bloxorz.html",
-        "/gx/gdlite.html"
+        "/gx/gdlite.html",
+        "/gx/osu!.html",
+        
       ];
       const random = gx[Math.floor(Math.random() * gx.length)];
       window.location.href = random;
     }
+
+    // note from myst (main dev) you can copy and paste the template here: "/gx/gamehere.html" add a comma to it if youre adding more games
