@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		"also use frogies arcade",
 		"fmhy.net",
 		"shoutout to bog he helped me with class of 09 on the site, thats my twin also",
-		"(715) 390-0424"
+		"(715) 390-0424",
+		"if you see this, on the game page press the f key"
 	];
 
 	var howmany = tell.length;
