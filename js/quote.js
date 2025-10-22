@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		"fmhy.net",
 		"shoutout to bog he helped me with class of 09 on the site, thats my twin also",
 		"(715) 390-0424",
-		"if you see this, on the game page press the f key"
+		"if you see this, on the game page press the up arrow key twice"
 	];
 
 	var howmany = tell.length;

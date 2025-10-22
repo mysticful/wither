@@ -1,7 +1,7 @@
 // ts code was made by chatgpt :sob:
 document.addEventListener("DOMContentLoaded", () => {
     const konamiCode = [
-        "F"
+        "ArrowUp", "ArrowUp"
     ];
     let inputSequence = [];
     
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         if (JSON.stringify(inputSequence) === JSON.stringify(konamiCode)) {
-            window.location.href = "/asdjdjnasjkdnakdjnsdfjfdlsjdnvcjnlaknvcvalnjvanljvankjvndav.html";
+            window.location.href = "https://wither.lat/asdjdjnasjkdnakdjnsdfjfdlsjdnvcjnlaknvcvalnjvanljvankjvndav.html";
         }
     });
 });
