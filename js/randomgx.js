@@ -35,7 +35,21 @@ function funcranGX() {
         "/gx/amongus.html",
         "/gx/bloxorz.html",
         "/gx/gdlite.html",
-        "/gx/osu!.html"
+        "/gx/osu!.html",
+        "/gx/amandatheadventurer.html",
+        "/gx/amaze.html",
+        "/gx/baconmaydie.html",
+        "/gx/bitlife.html",
+        "/gx/bowmasters.html",
+        "/gx/chatbot.html",
+        "/gx/drifthunters.html",
+        "/gx/ducklife2.html",
+        "/gx/fnaf.html",
+        "/gx/fnaf2.html",
+        "/gx/fridaynightfunkin.html",
+        "/gx/humanex.html",
+        "/gx/subwaysurfers.html",
+        "/gx/yumenikki.html"
       ];
       const random = gx[Math.floor(Math.random() * gx.length)];
       window.location.href = random;
