@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		"shoutout to bog he helped me with class of 09 on the site, thats my twin also",
 		"(715) 390-0424",
 		"if you see this, on the game page press the up arrow key twice",
-		"fun fact: the creator of this site is a huge fan of pinkpantheress, explaining one of the links being pinkpantheress.top"
+		"fun fact: the creator of this site is a huge fan of pinkpantheress, explaining one of the links being pinkpantheress.top",
+		"if u see this do ur classwork bro get them grades up",
+		"best site btw"
 	];
 
 	var howmany = tell.length;
