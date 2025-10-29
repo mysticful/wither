@@ -88,3 +88,11 @@ html,body {
     opacity: 1;
     transition: opacity 1s ease;
 }
+
+.frame {
+	border: none;
+    text-align: ceer;
+    justify-content: center;
+   height: 100%;
+   width: 100%;
+}
