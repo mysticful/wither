@@ -1,25 +1,24 @@
-
-/***********************
-   * Weather (Open-Meteo)
-   ***********************/
-  (function () {
-    async function getWeather(lat, lon) {
-      try {
-        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+/* **************************
+ * Weather (Open-Meteo)
+ * **************************/
+async function getWeather(lat, lon) {
+    try {
+        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&temperature_unit=celsius&forecast_days=1`);
         const data = await res.json();
-        const c = data?.current_weather?.temperature;
+        
+        const c = data.current_weather && data.current_weather.temperature;
+        
         if (typeof c === 'number') {
-          const f = Math.round((c * 9 / 5) + 32);
-          document.getElementById('theweather').textContent = `${f}°F`;
-        } 
-		else {
-          document.getElementById('theweather').textContent = 'N/A°F';
+            const f = Math.round((c * 9 / 5) + 32);
+            document.getElementById('theweather').textContent = `${f}°F`;
+        } else {
+            document.getElementById('theweather').textContent = 'N/A°F';
         }
-      } catch (e) {
+    } catch (e) {
         console.error('weather error', e);
         document.getElementById('theweather').textContent = 'N/A°F';
-      }
     }
+}
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(pos => {
         getWeather(pos.coords.latitude, pos.coords.longitude);
@@ -30,6 +29,3 @@
     } else {
       document.getElementById('theweather').textContent = 'N/A°F';
     }
-
-	alert("if this site asks you for your location, you dont have to accept it !! this is only used for obtaining the weather displayed on the main page !!");
-})
