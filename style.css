@@ -96,3 +96,13 @@ html,body {
    height: 100%;
    width: 100%;
 }
+
+#theweather {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+    color: white;
+  font-family: "Georgia";
+  margin-left: 5px;
+}
