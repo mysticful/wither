@@ -4,7 +4,7 @@ html,body {
   justify-content: center;
   align-items: center;
   transition: background 0.4s, color 0.3s;
-  background: linear-gradient(#000000, #a5124c);
+  background: #000000;
     color: white;
     font-family: monospace;
     text-align: center;
@@ -17,7 +17,7 @@ html,body {
 #title {
   font-size: 2.2em;
       margin-bottom: 10px;
-      color: #ff88dd;
+      color: #ffffff;
       font-family: "Georgia", serif;
       text-shadow: 0 0 8px #ff80c0;
     text-decoration: underline;
