@@ -1,10 +1,41 @@
-function openTab() {
-var win = window.open()
-var url = "https://wither.lat"
-var iframe = win.document.createElement('iframe')
-iframe.style.width = "100%";
-iframe.style.height = "100%";
-iframe.style.border = "none";
-iframe.src = url
-win.document.body.appendChild(iframe)
+let inFrame
+// This code isnt mine obviously
+// Original code comes from interstellar
+// check there site out since your already here
+// discord.gg/interstellar
+
+
+try {
+    inFrame = window !== top
+} catch (e) {
+    inFrame = true
+}
+
+if (!inFrame && !navigator.userAgent.includes("Firefox")) {
+    const popup = open("about:blank", "_blank")
+    if (!popup || popup.closed) {
+        alert(" The following tab shows in your history. Allow popups and redirects to hide this from showing up in your history. do NOT do this if your browser doesnt support iframes ")
+    } else {
+        const doc = popup.document
+        const iframe = doc.createElement("iframe")
+        const style = iframe.style
+        const link = doc.createElement("link")
+
+        const name = localStorage.getItem("name") || "Home";
+        const icon = localStorage.getItem("icon") || "https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png";
+        
+        doc.title = name;
+        link.rel = "icon";
+        link.href = icon;
+        
+        iframe.src = location.href
+        style.position = "fixed"
+        style.top = style.bottom = style.left = style.right = 0
+        style.border = style.outline = "none"
+        style.width = style.height = "100%"
+
+        doc.head.appendChild(link);
+        doc.body.appendChild(iframe)
+        location.replace("https://classroom.google.com")
+    }
 }

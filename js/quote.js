@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		"if you see this, on the game page press the up arrow key twice",
 		"fun fact: the creator of this site is a huge fan of pinkpantheress, explaining one of the links being pinkpantheress.top",
 		"if u see this do ur classwork bro get them grades up",
-		"best site btw"
+		"best site btw",
+		"hotline miami 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀"
 	];
 
 	var howmany = tell.length;

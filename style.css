@@ -5,9 +5,9 @@ html,body {
   align-items: center;
   transition: background 0.4s, color 0.3s;
   background: linear-gradient(#000000, #a5124c);
-    color: white;
-    font-family: monospace;
-    text-align: center;
+  color: white;
+  font-family: system-ui;
+  text-align: center;
   height: 100%;
   width: 100%;
   margin: 0;
@@ -16,16 +16,16 @@ html,body {
 
 #title {
   font-size: 2.2em;
-      margin-bottom: 10px;
-      color: #ff88dd;
-      font-family: "Georgia", serif;
-      text-shadow: 0 0 8px #ff80c0;
-    text-decoration: underline;
-    font-size: 41px;
+  margin-bottom: 10px;
+  color: #ff88dd;
+  font-family: "Georgia", serif;
+  text-shadow: 0 0 8px #ff80c0;
+  text-decoration: underline;
+  font-size: 41px;
 }
 
 #bttn {
- font-family: monospace;
+  font-family: monospace;
   font-size: 16px;
   color: white;
   background: #ff69b4;
@@ -55,54 +55,173 @@ html,body {
   margin: 0 auto;
 }
 
-#thetime {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    font-size: 12px;
-    color: white;
-  font-family: "Georgia";
-}
-
 .buttons {
   display: flex;
 }
 
 #loading-screen {
   position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(#000000, #a5124c);
-    font-size: 2.2em;
-      margin-bottom: 10px;
-      color: #ff88dd;
-      font-family: "Georgia", serif;
-      text-shadow: 0 0 8px #ff80c0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 9998;
-    opacity: 1;
-    transition: opacity 1s ease;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000000, #a5124c);
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  color: #ff88dd;
+  font-family: "Georgia", serif;
+  text-shadow: 0 0 8px #ff80c0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9998;
+  opacity: 1;
+  transition: opacity 1s ease;
 }
 
 .frame {
-	border: none;
-    text-align: center;
-    justify-content: center;
-   height: 100%;
-   width: 100%;
+  border: none;
+  text-align: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
-#theweather {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    font-size: 12px;
-    color: white;
-  font-family: "Georgia";
-  margin-left: 5px;
+#menu {
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-family: system-ui;
+  color: white;
+}
+
+#menu span {
+  margin: 0;
+  padding: 0;
+}
+
+#uv-address {
+  background-color: #270606;
+  border: 3px #681717 solid;
+  border-radius: 30px;
+  padding: 10px;
+  text-align: left;
+  color: white;
+  font-family: system-ui;
+  outline: none;
+  transition: all .2s ease-in-out;
+  width: 350px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.star {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: twinkling 5s infinite, moving linear 20s infinite;
+}
+
+@keyframes twinkling {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes moving {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+#space {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: -1;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  background-color: #1e040f;
+  border-radius: 0 24px 24px 0;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.1;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+#navigation {
+  height: 100%;
+  width: 100%;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+}
+
+.icon-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-item {
+  display: block;
+  color: white;
+  font-size: 32px;
+  text-align: center;
+  text-decoration: none;
+  padding: 2.5rem 0;
+  transition: transform 0.2s ease-out, color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.icon-item:hover {
+  transform: scale(1.1);
 }
