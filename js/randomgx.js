@@ -53,7 +53,11 @@ function funcranGX() {
         "/gx/minecraft.html",
         "/gx/bfdia5b.html",
         "/gx/co09fs.html",
-        "/gx/co09ru.html"
+        "/gx/co09ru.html",
+        "/gx/retrobowl.html",
+        "/gx/retrobowl-college.html",
+        "/gx/stickmanhook.html",
+        "/gx/hertearsweremylight.html"
       ];
       const random = gx[Math.floor(Math.random() * gx.length)];
       window.location.href = random;

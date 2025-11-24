@@ -243,3 +243,18 @@ input {
   margin: 0;
   padding: 0;
 }
+
+#gxSearch {
+  background-color: #270606;
+  border: 3px #681717 solid;
+  border-radius: 30px;
+  padding: 10px;
+  text-align: left;
+  color: white;
+  font-family: system-ui;
+  outline: none;
+  transition: all .2s ease-in-out;
+  width: 350px;
+  font-size: 20px;
+  text-align: center;
+}
