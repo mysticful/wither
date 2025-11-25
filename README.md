@@ -7,7 +7,7 @@ from it being easy on storage, to its simplicity yet marvelous collection of gam
 wither has been filed under the [MIT License](https://choosealicense.com/licenses/mit/) since 9/20/25 (mm/dd/yy)
 
 # credits
-Games: [seraph](https://github.com/a456pur/seraph), gn-math, [wrnd](https://github.com/wrndxyz), [3kh0](https://3kh0.net), and me! :D
+Games: [seraph](https://github.com/a456pur/seraph), gn-math, [wrnd](https://github.com/wrndxyz), [truffled](https://truffled.lol), [3kh0](https://3kh0.net), and me! :D
 
 # request a takedown
 email me at hi@myst.lat
