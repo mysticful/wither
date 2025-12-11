@@ -1,221 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-        <base href="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/laceysflashgames/">
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>Lacey's Flash Games</title>
-		<style>
-html, body, #canvas {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
+<head>
+    <base href="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/laceysflashgames/">
 
-body {
-	color: white;
-	background-color: black;
-	overflow: hidden;
-	touch-action: none;
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>Lacey's Flash Games</title>
 
-#canvas {
-	display: block;
-}
+    <style>
+        html, body, #canvas {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
 
-#canvas:focus {
-	outline: none;
-}
+        body {
+            color: white;
+            background-color: black;
+            overflow: hidden;
+            touch-action: none;
+        }
 
-#status, #status-splash, #status-progress {
-	position: absolute;
-	left: 0;
-	right: 0;
-}
+        #canvas {
+            display: block;
+        }
 
-#status, #status-splash {
-	top: 0;
-	bottom: 0;
-}
+        #canvas:focus {
+            outline: none;
+        }
 
-#status {
-	background-color: #242424;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	visibility: hidden;
-}
+        #status, #status-splash, #status-progress {
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
 
-#status-splash {
-	max-height: 100%;
-	max-width: 100%;
-	margin: auto;
-}
+        #status, #status-splash {
+            top: 0;
+            bottom: 0;
+        }
 
-#status-splash.show-image--false {
-	display: none;
-}
+        #status {
+            background-color: #242424;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+        }
 
-#status-splash.fullsize--true {
-	height: 100%;
-	width: 100%;
-	object-fit: contain;
-}
+        #status-splash {
+            max-height: 100%;
+            max-width: 100%;
+            margin: auto;
+        }
 
-#status-splash.use-filter--false {
-	image-rendering: pixelated;
-}
+        #status-splash.show-image--false {
+            display: none;
+        }
 
-#status-progress, #status-notice {
-	display: none;
-}
+        #status-splash.fullsize--true {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
 
-#status-progress {
-	bottom: 10%;
-	width: 50%;
-	margin: 0 auto;
-}
+        #status-splash.use-filter--false {
+            image-rendering: pixelated;
+        }
 
-#status-notice {
-	background-color: #5b3943;
-	border-radius: 0.5rem;
-	border: 1px solid #9b3943;
-	color: #e0e0e0;
-	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
-	line-height: 1.3;
-	margin: 0 2rem;
-	overflow: hidden;
-	padding: 1rem;
-	text-align: center;
-	z-index: 1;
-}
-		</style>
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="Lacey's Flash Games.icon.png" />
-<link rel="apple-touch-icon" href="Lacey's Flash Games.apple-touch-icon.png"/>
-<link rel="manifest" href="Lacey's Flash Games.manifest.json">
+        #status-progress, #status-notice {
+            display: none;
+        }
 
-	</head>
-	<body>
-		<canvas id="canvas">
-			Your browser does not support the canvas tag.
-		</canvas>
+        #status-progress {
+            bottom: 10%;
+            width: 50%;
+            margin: 0 auto;
+        }
 
-		<noscript>
-			Your browser does not support JavaScript.
-		</noscript>
+        #status-notice {
+            background-color: #5b3943;
+            border-radius: 0.5rem;
+            border: 1px solid #9b3943;
+            color: #e0e0e0;
+            font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
+            line-height: 1.3;
+            margin: 0 2rem;
+            overflow: hidden;
+            padding: 1rem;
+            text-align: center;
+            z-index: 1;
+        }
+    </style>
 
-		<div id="status">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="Lacey's Flash Games.png" alt="">
-			<progress id="status-progress"></progress>
-			<div id="status-notice"></div>
-		</div>
+    <link id="-gd-engine-icon" rel="icon" type="image/png" href="laceys_flash_games.icon.png" />
+    <link rel="apple-touch-icon" href="laceys_flash_games.apple-touch-icon.png"/>
+    <link rel="manifest" href="laceys_flash_games.manifest.json">
+</head>
 
-		<script src="Lacey's Flash Games.js"></script>
-		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"Lacey's Flash Games","experimentalVK":false,"fileSizes":{"Lacey's Flash Games.pck":394786816,"Lacey's Flash Games.wasm":36160334},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"Lacey's Flash Games.service.worker.js"};
-const GODOT_THREADS_ENABLED = false;
-const engine = new Engine(GODOT_CONFIG);
+<body>
+    <canvas id="canvas">
+        Your browser does not support the canvas tag.
+    </canvas>
 
-(function () {
-	const statusOverlay = document.getElementById('status');
-	const statusProgress = document.getElementById('status-progress');
-	const statusNotice = document.getElementById('status-notice');
+    <noscript>
+        Your browser does not support JavaScript.
+    </noscript>
 
-	let initializing = true;
-	let statusMode = '';
+    <div id="status">
+        <img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="laceys_flash_games.png" alt="">
+        <progress id="status-progress"></progress>
+        <div id="status-notice"></div>
+    </div>
 
-	function setStatusMode(mode) {
-		if (statusMode === mode || !initializing) {
-			return;
-		}
-		if (mode === 'hidden') {
-			statusOverlay.remove();
-			initializing = false;
-			return;
-		}
-		statusOverlay.style.visibility = 'visible';
-		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
-		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
-		statusMode = mode;
-	}
+    <script src="laceys_flash_games.js"></script>
 
-	function setStatusNotice(text) {
-		while (statusNotice.lastChild) {
-			statusNotice.removeChild(statusNotice.lastChild);
-		}
-		const lines = text.split('\n');
-		lines.forEach((line) => {
-			statusNotice.appendChild(document.createTextNode(line));
-			statusNotice.appendChild(document.createElement('br'));
-		});
-	}
+    <script>
+        const GODOT_CONFIG = {
+            "args": [],
+            "canvasResizePolicy": 2,
+            "emscriptenPoolSize": 8,
+            "ensureCrossOriginIsolationHeaders": true,
+            "executable": "laceys_flash_games",
+            "experimentalVK": false,
+            "fileSizes": {
+                "laceys_flash_games.pck": 394786816,
+                "laceys_flash_games.wasm": 36160334
+            },
+            "focusCanvas": true,
+            "gdextensionLibs": [],
+            "godotPoolSize": 4,
+            "serviceWorker": "laceys_flash_games.service.worker.js"
+        };
 
-	function displayFailureNotice(err) {
-		console.error(err);
-		if (err instanceof Error) {
-			setStatusNotice(err.message);
-		} else if (typeof err === 'string') {
-			setStatusNotice(err);
-		} else {
-			setStatusNotice('An unknown error occurred.');
-		}
-		setStatusMode('notice');
-		initializing = false;
-	}
+        const GODOT_THREADS_ENABLED = false;
 
-	const missing = Engine.getMissingFeatures({
-		threads: GODOT_THREADS_ENABLED,
-	});
+        const engine = new Engine(GODOT_CONFIG);
 
-	if (missing.length !== 0) {
-		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
-			let serviceWorkerRegistrationPromise;
-			try {
-				serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
-			} catch (err) {
-				serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
-			}
-			// There's a chance that installing the service worker would fix the issue
-			Promise.race([
-				serviceWorkerRegistrationPromise.then((registration) => {
-					if (registration != null) {
-						return Promise.reject(new Error('Service worker already exists.'));
-					}
-					return registration;
-				}).then(() => engine.installServiceWorker()),
-				// For some reason, `getRegistration()` can stall
-				new Promise((resolve) => {
-					setTimeout(() => resolve(), 2000);
-				}),
-			]).then(() => {
-				// Reload if there was no error.
-				window.location.reload();
-			}).catch((err) => {
-				console.error('Error while registering service worker:', err);
-			});
-		} else {
-			// Display the message as usual
-			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
-			displayFailureNotice(missingMsg + missing.join('\n'));
-		}
-	} else {
-		setStatusMode('progress');
-		engine.startGame({
-			'onProgress': function (current, total) {
-				if (current > 0 && total > 0) {
-					statusProgress.value = current;
-					statusProgress.max = total;
-				} else {
-					statusProgress.removeAttribute('value');
-					statusProgress.removeAttribute('max');
-				}
-			},
-		}).then(() => {
-			setStatusMode('hidden');
-		}, displayFailureNotice);
-	}
-}());
-		</script>
-	</body>
+        (function () {
+            const statusOverlay = document.getElementById('status');
+            const statusProgress = document.getElementById('status-progress');
+            const statusNotice = document.getElementById('status-notice');
+
+            let initializing = true;
+            let statusMode = '';
+
+            function setStatusMode(mode) {
+                if (statusMode === mode || !initializing) return;
+                if (mode === 'hidden') {
+                    statusOverlay.remove();
+                    initializing = false;
+                    return;
+                }
+
+                statusOverlay.style.visibility = 'visible';
+                statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
+                statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
+                statusMode = mode;
+            }
+
+            function setStatusNotice(text) {
+                while (statusNotice.lastChild) statusNotice.removeChild(statusNotice.lastChild);
+                const lines = text.split('\n');
+                lines.forEach((line) => {
+                    statusNotice.appendChild(document.createTextNode(line));
+                    statusNotice.appendChild(document.createElement('br'));
+                });
+            }
+
+            function displayFailureNotice(err) {
+                console.error(err);
+                if (err instanceof Error) setStatusNotice(err.message);
+                else if (typeof err === 'string') setStatusNotice(err);
+                else setStatusNotice('An unknown error occurred.');
+
+                setStatusMode('notice');
+                initializing = false;
+            }
+
+            const missing = Engine.getMissingFeatures({ threads: GODOT_THREADS_ENABLED });
+
+            if (missing.length !== 0) {
+                if (GODOT_CONFIG['serviceWorker'] &&
+                    GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] &&
+                    'serviceWorker' in navigator) {
+
+                    let serviceWorkerRegistrationPromise;
+                    try {
+                        serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
+                    } catch (err) {
+                        serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
+                    }
+
+                    Promise.race([
+                        serviceWorkerRegistrationPromise.then((registration) => {
+                            if (registration != null) {
+                                return Promise.reject(new Error('Service worker already exists.'));
+                            }
+                            return registration;
+                        }).then(() => engine.installServiceWorker()),
+                        
+                        new Promise((resolve) => setTimeout(() => resolve(), 2000))
+                    ])
+                    .then(() => window.location.reload())
+                    .catch((err) => {
+                        console.error('Error while registering service worker:', err);
+                    });
+                } else {
+                    const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
+                    displayFailureNotice(missingMsg + missing.join('\n'));
+                }
+            } else {
+                setStatusMode('progress');
+                engine.startGame({
+                    'onProgress': function (current, total) {
+                        if (current > 0 && total > 0) {
+                            statusProgress.value = current;
+                            statusProgress.max = total;
+                        } else {
+                            statusProgress.removeAttribute('value');
+                            statusProgress.removeAttribute('max');
+                        }
+                    },
+                }).then(() => {
+                    setStatusMode('hidden');
+                }, displayFailureNotice);
+            }
+        })();
+    </script>
+</body>
 </html>
