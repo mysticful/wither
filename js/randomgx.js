@@ -24,7 +24,9 @@ function funcranGX() {
         "/gx/mariokartds.html",
         "/gx/myTeardrop.html",
         "/gx/OMORI.html",
-        "/gx/papas.html",
+        "/gx/papas/papasbakeria.html",
+        "/gx/papas/papasfreezeira.html",
+         "/gx/papas/papaspizzaria.html",
         "/gx/slope.html",
         "/gx/sm64.html",
         "/gx/ULTRAKILL.html",
@@ -65,8 +67,17 @@ function funcranGX() {
         "/gx/oneshot.html",
         "/gx/buckshotroulette.html",
         "/gx/undertale.html",
-        "/gx/terraria.html",
-        "/gx/lacey.html"
+        "/gx/lacey.html",
+        "/gx/granny.html",
+        "/gx/gta2.html",
+        "/gx/pacman.html",
+        "/gx/pokemonblazeblack.html",
+        "/gx/pokemoncrystal.html",
+        "/gx/pokemonemerald.html",
+        "/gx/pokemonfirered.html",
+        "/gx/pokemonleafgreen",
+        "/gx/pokemonruby.html",
+        "/gx/bendy.html"
       ];
       const random = gx[Math.floor(Math.random() * gx.length)];
       window.location.href = random;
