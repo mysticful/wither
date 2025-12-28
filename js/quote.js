@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "directed by 21 savage",
         "gatekeep ts :3",
         "myst.lat",
+		"i still think this is ass, the worst site ive seen in months, just being honest - mongolixzq in the tn discord",
 		"what do you think of roleplay?",
 		"i dont like it very much.",
 		"make it bounce!",
