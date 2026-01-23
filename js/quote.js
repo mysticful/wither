@@ -50,7 +50,15 @@ document.addEventListener('DOMContentLoaded', function () {
 		"fun fact: the creator of this site is a huge fan of pinkpantheress, explaining one of the links being pinkpantheress.top",
 		"if u see this do ur classwork bro get them grades up",
 		"best site btw",
-		"hotline miami 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀"
+		"hotline miami 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀",
+		"'i hope you get jumped' - aubrey",
+		"'robert shut the fuck up you piece of shit faggot' - violet",
+		"'slit your wrists and show me on camera' - deborah",
+		"'hes looking for fresh meat. stop being friends with him' - violet",
+		"'robert is a plebian bitchlet who deserved to get aborted' - violet",
+		"'robert is a fucking manwhore' - violet",
+		"deborah: Ok tranny deborah: Girl wannabe deborah: Gender crosser deborah: Faggot deborah: Nipple sucker (all of these are chat logs from a whatsapp gc of someone harassing me bc i used to be trans)",
+		"all of the quotes with actual people in there have said those things ab me btw, i just added them on here bc i thought ts was the funniest coping mechanism oat"
 	];
 
 	var howmany = tell.length;
