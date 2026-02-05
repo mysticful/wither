@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
         "directed by 21 savage",
         "gatekeep ts :3",
         "myst.lat",
-		"i still think this is ass, the worst site ive seen in months, just being honest - mongolixzq in the tn discord",
 		"what do you think of roleplay?",
 		"i dont like it very much.",
 		"make it bounce!",
@@ -45,20 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		"also use frogies arcade",
 		"fmhy.net",
 		"shoutout to bog he helped me with class of 09 on the site, thats my twin also",
-		"(715) 390-0424",
 		"if you see this, on the game page press the up arrow key twice",
 		"fun fact: the creator of this site is a huge fan of pinkpantheress, explaining one of the links being pinkpantheress.top",
 		"if u see this do ur classwork bro get them grades up",
 		"best site btw",
-		"hotline miami 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀",
-		"'i hope you get jumped' - aubrey",
-		"'robert shut the fuck up you piece of shit faggot' - violet",
-		"'slit your wrists and show me on camera' - deborah",
-		"'hes looking for fresh meat. stop being friends with him' - violet",
-		"'robert is a plebian bitchlet who deserved to get aborted' - violet",
-		"'robert is a fucking manwhore' - violet",
-		"deborah: Ok tranny deborah: Girl wannabe deborah: Gender crosser deborah: Faggot deborah: Nipple sucker (all of these are chat logs from a whatsapp gc of someone harassing me bc i used to be trans)",
-		"all of the quotes with actual people in there have said those things ab me btw, i just added them on here bc i thought ts was the funniest coping mechanism oat"
+		"hotline miami 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀"
 	];
 
 	var howmany = tell.length;
