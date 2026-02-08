@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		"fun fact: the creator of this site is a huge fan of pinkpantheress, explaining one of the links being pinkpantheress.top",
 		"if u see this do ur classwork bro get them grades up",
 		"best site btw",
-		"hotline miami 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀"
+		"hotline miami 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀",
+		"wither v2 takes about ~6 gb on my computer"
 	];
 
 	var howmany = tell.length;
