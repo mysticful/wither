@@ -75,9 +75,10 @@ function funcranGX() {
         "/gx/pokemoncrystal.html",
         "/gx/pokemonemerald.html",
         "/gx/pokemonfirered.html",
-        "/gx/pokemonleafgreen",
+        "/gx/pokemonleafgreen.html",
         "/gx/pokemonruby.html",
-        "/gx/bendy.html"
+        "/gx/bendy.html",
+        "/gx/nso.html"
       ];
       const random = gx[Math.floor(Math.random() * gx.length)];
       window.location.href = random;
