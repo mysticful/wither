@@ -79,7 +79,23 @@ function funcranGX() {
         "/gx/pokemonruby.html",
         "/gx/bendy.html",
         "/gx/nso.html",
-        "/gx/fivenightsatepsteins.html"
+        "/gx/fivenightsatepsteins.html",
+        "/gx/1 Date Danger.html",
+        "/gx/8 Ball Pool.html",
+        "/gx/64 in 1 NES.html",
+        "/gx/A Bite at Freddy's.html",
+        "/gx/Achievement Unlocked.html",
+        "/gx/Achievement Unlocked 2.html",
+        "/gx/Achievement Unlocked 3.html",
+        "/gx/Breath of the Wild NDS.html",
+        "/gx/CG FC 25.html",
+        "/gx/Five Nights at Freddy's Sister Location.html",
+        "/gx/Five Nights at Last Breath.html",
+        "/gx/gooberdash.html",
+        "/gx/Iron Lung.html",
+        "/gx/Peaks of Yore.html",
+        "/gx/Speed Stars.html",
+        "/gx/Untitled Goose Game.html"
       ];
       const random = gx[Math.floor(Math.random() * gx.length)];
       window.location.href = random;
