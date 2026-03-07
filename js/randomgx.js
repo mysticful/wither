@@ -95,7 +95,8 @@ function funcranGX() {
         "/gx/Iron Lung.html",
         "/gx/Peaks of Yore.html",
         "/gx/Speed Stars.html",
-        "/gx/Untitled Goose Game.html"
+        "/gx/Untitled Goose Game.html",
+        "/gx/gtag.html"
       ];
       const random = gx[Math.floor(Math.random() * gx.length)];
       window.location.href = random;
