@@ -96,7 +96,17 @@ function funcranGX() {
         "/gx/Peaks of Yore.html",
         "/gx/Speed Stars.html",
         "/gx/Untitled Goose Game.html",
-        "/gx/gtag.html"
+        "/gx/aceattorneyapollojustice.html",
+        "/gx/aceattorneytat.html",
+        "/gx/aceattorneyinvestigations.html",
+        "/gx/aceattorneyjusticeforall.html",
+        "/gx/bindingofissacwrathofthelamb.html",
+        "/gx/cookingmama2.html",
+        "/gx/cookingmama3.html",
+        "/gx/gachaclub.html",
+        "/gx/gachalife.html",
+        "/gx/gachalife2.html",
+        "/gx/gachaverse.html"
       ];
       const random = gx[Math.floor(Math.random() * gx.length)];
       window.location.href = random;
