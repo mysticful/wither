@@ -1,6 +1,6 @@
 var elem = document.getElementById("gxFrame");
 
-function openFullscreen() {
+function fullscreenGx() {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } else if (elem.webkitRequestFullscreen) {

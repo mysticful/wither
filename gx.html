@@ -27,15 +27,16 @@
     <br>
     <h1 id="title">wither | games</h1>
  <br>
- <a class="bttn2" onclick="funcranGX()">random game</a>
- <br>
- <br>
  <input type="text" id="gxSearch" placeholder="search games..." style="padding:10px;width:300px;border-radius:8px;border:none;font-size:16px;background:transparent;text-shadow:none;">
 <br> 
 <div id="gxContainer" style="display:none;">
-  <button onclick="closeGx()">← back to games</button>
+  <button style="font-family: monospace;font-size: 16px;color: white;background: #ff69b4;padding: 10px 24px;border-radius: 6px;box-shadow: 0 0 8px var(--button-border-color, #ffb6c1);transition: all 0.2s ease-in-out;cursor: pointer;text-decoration: none;display: inline-block;margin: 10px;" onclick="closeGx()">← back to games</button>  
+  <button style="font-family: monospace;font-size: 16px;color: white;background: #ff69b4;padding: 10px 24px;border-radius: 6px;box-shadow: 0 0 8px var(--button-border-color, #ffb6c1);transition: all 0.2s ease-in-out;cursor: pointer;text-decoration: none;display: inline-block;margin: 10px;" onclick="downloadGx()">download</button>  
+  <button style="font-family: monospace;font-size: 16px;color: white;background: #ff69b4;padding: 10px 24px;border-radius: 6px;box-shadow: 0 0 8px var(--button-border-color, #ffb6c1);transition: all 0.2s ease-in-out;cursor: pointer;text-decoration: none;display: inline-block;margin: 10px;" onclick="fullscreenGx()">fullscreen</button>
+    <br>
     <br>
   <iframe id="gxFrame" src="" frameborder="0"></iframe>
+  <script src="js/components/fullscreen-iframe.js"></script>
 </div>
 <div class="bttn-container">
 <a href="gx/1 Date Danger.html" class="bttn">
@@ -635,17 +636,14 @@
 </div>
 <script src="js/time.js"></script>
 <script src="wither.js"></script>
-<script src="js/randomgx.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
   const gxLinks = document.querySelectorAll(".bttn-container a");
   const frame = document.getElementById("gxFrame");
   const container = document.getElementById("gxContainer");
   const list = document.querySelector(".bttn-container");
   const sidebar = document.getElementById("sidebar");
-  const search = document.getElementById("gxSearch");
-  const random = document.querySelector(".bttn2");
+  let currentGxURL = "";
 
   gxLinks.forEach(link => {
     link.addEventListener("click", function(e) {
@@ -654,24 +652,35 @@ document.addEventListener("DOMContentLoaded", function () {
       const url = this.getAttribute("href");
 
       frame.src = url;
+      currentGxURL = url;
       container.style.display = "block";
       list.style.display = "none";
       sidebar.style.display = "none";
-      search.style.display = "none";
-      random.style.display = "none";
 
       window.scrollTo(0,0);
     });
   });
 });
 
+function downloadGx(){
+
+  if(!currentGxURL) return;
+
+  const a = document.createElement("a");
+  a.href = currentGxURL;
+  a.download = currentGxURL.split("/").pop();
+
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+}
+
 function closeGx(){
   document.getElementById("gxFrame").src = "";
   document.querySelector(".bttn-container").style.display = "flex";
   document.getElementById("gxContainer").style.display = "none";
   document.getElementById("sidebar").style.display = "block";
-  document.getElementById("search").style.display = "block";
-  document.querySelector(".bttn2").style.display = "block";
 }
 </script>
 
