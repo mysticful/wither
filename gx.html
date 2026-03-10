@@ -1,11 +1,9 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gx | wither</title>
+    <title>calculator - Google Search</title>
         <link rel="stylesheet" href="gx.css">
-    <link rel="icon" type="image/x-icon" href="img/wither.png">
-    <!-- IMPORTANT SCRIPT BELOW, DO NOT REMOVE. -->
-    <script src="/js/app.js"></script>
+    <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
     <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5487787279794518" crossorigin="anonymous"></script>
      <script src="/js/secret.js"></script>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/CDg0l5W4Z/fFw9l/Zf0I8W71n3Q1X1T8L8pY4iG7Zz7F7D8z6N8x8H8P4y4w==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -32,6 +30,10 @@
  <a class="bttn2" onclick="funcranGX()">random game</a>
  <br>
  <br>
+ <div id="gxContainer" style="display:none;">
+  <button onclick="closeGame()" style="margin-bottom:10px;">← back to games</button>
+  <iframe id="gxFrame" src="" width="100%" height="800px" frameborder="0"></iframe>
+</div>
 <div class="bttn-container">
 <a href="gx/1 Date Danger.html" class="bttn">
 <img src="/img/1 date danger.png">
@@ -631,7 +633,28 @@
 <script src="js/time.js"></script>
 <script src="wither.js"></script>
 <script src="js/randomgx.js"></script>
+<script>
+const gameLinks = document.querySelectorAll(".bttn-container a");
 
+gameLinks.forEach(link => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
 
+    const url = this.getAttribute("href");
 
-</body></html>
+    document.getElementById("gameFrame").src = url;
+    document.getElementById("gameContainer").style.display = "block";
+
+    document.querySelector(".bttn-container").style.display = "none";
+  });
+});
+
+function closeGame() {
+  document.getElementById("gxFrame").src = "";
+  document.getElementById("gxContainer").style.display = "none";
+  document.querySelector(".bttn-container").style.display = "block";
+}
+</script>
+
+</body>
+</html>
