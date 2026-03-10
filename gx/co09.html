@@ -160,7 +160,7 @@
             return res.arrayBuffer();
         })
     ));
-    return URL.createObjectURL(new Blob(responses, { type: 'application/octet-stream' }));
+    return URL.createObjectURL(new Blob(responses, { type: 'video/webm' }));
 }
 
 function getParts(baseName, count) {
