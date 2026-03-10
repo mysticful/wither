@@ -640,6 +640,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const frame = document.getElementById("gxFrame");
   const container = document.getElementById("gxContainer");
   const list = document.querySelector(".bttn-container");
+  const sidebar = document.getElementById("sidebar");
 
   gxLinks.forEach(link => {
     link.addEventListener("click", function(e) {
@@ -650,6 +651,7 @@ document.addEventListener("DOMContentLoaded", function () {
       frame.src = url;
       container.style.display = "block";
       list.style.display = "none";
+      sidebar.style.display = "none";
 
       window.scrollTo(0,0);
     });
@@ -661,6 +663,7 @@ function closeGx(){
   document.getElementById("gxFrame").src = "";
   document.querySelector(".bttn-container").style.display = "flex";
   document.getElementById("gxContainer").style.display = "none";
+  document.getElementById("sidebar").style.display = "block";
 }
 </script>
 
