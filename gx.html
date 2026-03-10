@@ -30,8 +30,11 @@
  <a class="bttn2" onclick="funcranGX()">random game</a>
  <br>
  <br>
- <div id="gxContainer" style="display:none;">
+ <input type="text" id="gxSearch" placeholder="search games..." style="padding:10px;width:300px;border-radius:8px;border:none;font-size:16px;background:transparent;text-shadow:none;">
+<br> 
+<div id="gxContainer" style="display:none;">
   <button onclick="closeGx()">← back to games</button>
+    <br>
   <iframe id="gxFrame" src="" frameborder="0"></iframe>
 </div>
 <div class="bttn-container">
@@ -641,6 +644,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("gxContainer");
   const list = document.querySelector(".bttn-container");
   const sidebar = document.getElementById("sidebar");
+  const search = document.getElementById("gxSearch");
+  const random = document.querySelector(".bttn2");
 
   gxLinks.forEach(link => {
     link.addEventListener("click", function(e) {
@@ -652,11 +657,12 @@ document.addEventListener("DOMContentLoaded", function () {
       container.style.display = "block";
       list.style.display = "none";
       sidebar.style.display = "none";
+      search.style.display = "none";
+      random.style.display = "none";
 
       window.scrollTo(0,0);
     });
   });
-
 });
 
 function closeGx(){
@@ -664,8 +670,30 @@ function closeGx(){
   document.querySelector(".bttn-container").style.display = "flex";
   document.getElementById("gxContainer").style.display = "none";
   document.getElementById("sidebar").style.display = "block";
+  document.getElementById("search").style.display = "flex";
+  document.querySelector(".bttn2").style.display = "flex";
 }
 </script>
 
+<script>
+document.getElementById("gxSearch").addEventListener("keyup", function() {
+
+  let search = this.value.toLowerCase();
+  let games = document.querySelectorAll(".bttn-container .bttn");
+
+  games.forEach(game => {
+
+    let title = game.querySelector("h2").textContent.toLowerCase();
+
+    if (title.includes(search)) {
+      game.style.display = "inline-block";
+    } else {
+      game.style.display = "none";
+    }
+
+  });
+
+});
+</script>
 </body>
 </html>
