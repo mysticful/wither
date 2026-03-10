@@ -2,11 +2,11 @@
 <html lang="en-us">
 
 <head>
- <script src="/coi-serviceworker.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Class of '09</title>
-  <base href="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/">
+  <script src="/coi-serviceworker.js"></script>
+  <base href="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
   <link rel="icon" href="icons/icon-72x72.png" sizes="72x72" type="image/png" />
@@ -188,7 +188,7 @@
   <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
   <div id="overlayDiv"></div>
 
-  <img id="presplash" src="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/web-presplash.jpg">
+  <img id="presplash" src="web-presplash.jpg">
 
   <div id="ContextContainer">
     <a id="ContextButton">&#8801;</a><br />
@@ -197,8 +197,10 @@
         style=display:none></input>
       <a href="javascript:document.getElementById('ID_SavegamesImport').click();">Import Saves</a>
       <a href="javascript:onSavegamesExport();">Export Saves</a>
-      <a href="javascript:FSDownload('log.txt', 'text/plain');">more games @ wither.lat</a>
-      <a href="https://myst.lat/" target="_blank">ported by mysticful</a>
+      <a href="javascript:FSDownload('/log.txt', 'text/plain');">Download Log</a>
+      <a href="https://www.renpy.org/" target="_blank">
+          Powered by Ren'Py
+      </a>
       </span>
     </div>
   </div>
@@ -217,52 +219,17 @@
 
   <script>
       // The URL to game.zip, relative to the URL of this file.
-      window.gameZipURL = 'https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/game.zip';
+      window.gameZipURL = 'https://cdn.jsdelivr.net/gh/mysticful/web-port@main/game.zip';
 
       // Register the service worker.
-      const CACHE_NAME = 'class-of-09-v1';
-const CACHE_ONLY = ['game.zip'];
-
-
-self.addEventListener('install', () => {
-  self.skipWaiting();
-});
-    
-self.addEventListener('activate', () => {
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', event => {
-  const url = new URL(event.request.url);
-
-  if (
-    url.pathname.endsWith('.wasm') ||
-    url.pathname.endsWith('.data') ||
-    url.pathname.endsWith('renpy.js') ||
-    url.pathname.endsWith('renpy-pre.js')
-  ) {
-    return;
-  }
-  
-  if (CACHE_ONLY.some(f => url.pathname.endsWith(f))) {
-    event.respondWith(
-      caches.open(CACHE_NAME).then(async cache => {
-        const cached = await cache.match(event.request);
-        if (cached) return cached;
-
-        const response = await fetch(event.request);
-        if (response.ok) {
-          cache.put(event.request, response.clone());
-        }
-        return response;
-      })
-    );
-  }
-});
-
+      if (navigator.serviceWorker) {
+          if (!navigator.serviceWorker.controller) {
+              navigator.serviceWorker.register('./service-worker.js', { updateViaCache: 'all' });
+          }
+      }
   </script>
-  <script src="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/renpy-pre.js"></script>
-  <script async type="text/javascript" src="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/renpy.js"></script>
+  <script src="renpy-pre.js"></script>
+  <script async type="text/javascript" src="renpy.js"></script>
 </body>
 
 </html>
