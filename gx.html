@@ -31,8 +31,8 @@
  <br>
  <br>
  <div id="gxContainer" style="display:none;">
-  <button onclick="closeGame()" style="margin-bottom:10px;">← back to games</button>
-  <iframe id="gxFrame" src="" width="100%" height="800px" frameborder="0"></iframe>
+  <button onclick="closeGx()">← back to games</button>
+  <iframe id="gxFrame" src="" frameborder="0"></iframe>
 </div>
 <div class="bttn-container">
 <a href="gx/1 Date Danger.html" class="bttn">
@@ -634,25 +634,33 @@
 <script src="wither.js"></script>
 <script src="js/randomgx.js"></script>
 <script>
-const gameLinks = document.querySelectorAll(".bttn-container a");
+document.addEventListener("DOMContentLoaded", function () {
 
-gameLinks.forEach(link => {
-  link.addEventListener("click", function(e) {
-    e.preventDefault();
+  const gxLinks = document.querySelectorAll(".bttn-container a");
+  const frame = document.getElementById("gxFrame");
+  const container = document.getElementById("gxContainer");
+  const list = document.querySelector(".bttn-container");
 
-    const url = this.getAttribute("href");
+  gxLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
 
-    document.getElementById("gameFrame").src = url;
-    document.getElementById("gameContainer").style.display = "block";
+      const url = this.getAttribute("href");
 
-    document.querySelector(".bttn-container").style.display = "none";
+      frame.src = url;
+      container.style.display = "block";
+      list.style.display = "none";
+
+      window.scrollTo(0,0);
+    });
   });
+
 });
 
-function closeGame() {
+function closeGx(){
   document.getElementById("gxFrame").src = "";
+  document.querySelector(".bttn-container").style.display = "flex";
   document.getElementById("gxContainer").style.display = "none";
-  document.querySelector(".bttn-container").style.display = "block";
 }
 </script>
 
