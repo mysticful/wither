@@ -183,9 +183,9 @@
             mergeFiles(getParts("game.zip", 1, 2, 3)).then(async url => {
                 window.gameZipUrl = url;
                 let renpypre = document.createElement("script");
-                renpypre.src = "https://cdn.jsdelivr.net/gh/mysticful/class-of-09@main/renpy-pre.js"
+                renpypre.src = "https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/renpy-pre.js"
                 let renpy = document.createElement("script");
-                renpy.src = "https://cdn.jsdelivr.net/gh/mysticful/class-of-09@main/renpy.js"
+                renpy.src = "https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/renpy.js"
                 document.body.appendChild(renpypre);
                 document.body.appendChild(renpy);
             });
