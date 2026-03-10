@@ -153,42 +153,46 @@
 
     <body>
         <script>
-            function mergeFiles(fileParts) {
-                return new Promise((resolve, reject) => {
-                    let buffers = [];
+          async function mergeFiles(fileParts) {
+    const responses = await Promise.all(fileParts.map(part => 
+        fetch(part).then(res => {
+            if (!res.ok) throw new Error(`Failed to fetch ${part}`);
+            return res.arrayBuffer();
+        })
+    ));
+    return URL.createObjectURL(new Blob(responses, { type: 'application/octet-stream' }));
+}
+
+function getParts(baseName, count) {
+    let parts = [];
+    for (let i = 1; i <= count; i++) {
+        parts.push(`${baseName}.part${i}`);
+    }
+    return parts;
+}
+
+Promise.all([
+    mergeFiles(getParts("game.zip", 3)),
+    mergeFiles(getParts("renpy.wasm", 3))
+]).then(([zipUrl, wasmUrl]) => {
     
-                    function fetchPart(index) {
-                        if (index >= fileParts.length) {
-                            let mergedBlob = new Blob(buffers);
-                            let mergedFileUrl = URL.createObjectURL(mergedBlob);
-                            resolve(mergedFileUrl);
-                            return;
-                        }
-                        fetch(fileParts[index]).then((response) => response.arrayBuffer()).then((data) => {
-                            buffers.push(data);
-                            fetchPart(index + 1);
-                        }).catch(reject);
-                    }
-                    fetchPart(0);
-                });
-            }
+    window.gameZipURL = zipUrl;
     
-            function getParts(file, start, end) {
-                let parts = [];
-                for (let i = start; i <= end; i++) {
-                    parts.push(file + ".part" + i);
-                }
-                return parts;
-            }
-            mergeFiles(getParts("game.zip", 1, 2, 3)).then(async url => {
-                window.gameZipUrl = url;
-                let renpypre = document.createElement("script");
-                renpypre.src = "https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/renpy-pre.js"
-                let renpy = document.createElement("script");
-                renpy.src = "https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/renpy.js"
-                document.body.appendChild(renpypre);
-                document.body.appendChild(renpy);
-            });
+    window.Module = {
+        locateFile: (path) => path.endsWith(".wasm") ? wasmUrl : path
+    };
+
+    console.log("Merging complete. Initializing Ren'Py...");
+
+    const baseUrl = "https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/";
+    const scripts = ["renpy-pre.js", "renpy.js"];
+    
+    scripts.forEach(src => {
+        let script = document.createElement("script");
+        script.src = baseUrl + src;
+        document.body.appendChild(script);
+    });
+});
         </script>
         <canvas id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas><img id=presplash src="">
         <div id=ContextContainer><a id=ContextButton>≡</a><br>
