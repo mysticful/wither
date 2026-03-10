@@ -637,20 +637,21 @@
 <script src="js/time.js"></script>
 <script src="wither.js"></script>
 <script>
+let currentGameURL = "";
+</script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const gxLinks = document.querySelectorAll(".bttn-container a");
   const frame = document.getElementById("gxFrame");
   const container = document.getElementById("gxContainer");
   const list = document.querySelector(".bttn-container");
   const sidebar = document.getElementById("sidebar");
-  let currentGxURL = "";
 
   gxLinks.forEach(link => {
     link.addEventListener("click", function(e) {
       e.preventDefault();
 
       const url = this.getAttribute("href");
-
       frame.src = url;
       currentGxURL = url;
       container.style.display = "block";
