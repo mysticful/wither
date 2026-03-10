@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Class of '09</title>
   <script src="/coi-serviceworker.js"></script>
-  <base href="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/">
+  <base href="https://fastly.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
   <link rel="icon" href="icons/icon-72x72.png" sizes="72x72" type="image/png" />
@@ -218,18 +218,50 @@
   </div>
 
   <script>
-      // The URL to game.zip, relative to the URL of this file.
-      window.gameZipURL = 'https://cdn.jsdelivr.net/gh/mysticful/web-port@main/game.zip';
+     (async function() {
+    const statusText = document.getElementById('statusTextDiv');
+    document.getElementById('statusDiv').className = 'visible';
 
-      // Register the service worker.
-      if (navigator.serviceWorker) {
-          if (!navigator.serviceWorker.controller) {
-              navigator.serviceWorker.register('./service-worker.js', { updateViaCache: 'all' });
-          }
-      }
+    async function fetchAndStitch(baseName, totalParts) {
+        statusText.innerText = `Assembling ${baseName}...`;
+        const blobParts = [];
+        
+        for (let i = 1; i <= totalParts; i++) {
+            const partUrl = `${baseName}.part${i}`;
+            const response = await fetch(partUrl);
+            
+            if (!response.ok) throw new Error(`Could not find ${partUrl}`);
+            
+            blobParts.push(await response.arrayBuffer());
+            statusText.innerText = `Downloaded ${baseName} part ${i}/${totalParts}`;
+        }
+        
+        return new Blob(blobParts, { type: 'application/octet-stream' });
+    }
+
+    try {
+        const wasmBlob = await fetchAndStitch('renpy.wasm', 3);
+        const gameBlob = await fetchAndStitch('game.zip', 3);
+
+        const wasmURL = URL.createObjectURL(wasmBlob);
+        window.gameZipURL = URL.createObjectURL(gameBlob);
+
+        window.Module = {
+            locateFile: (path) => path.endsWith(".wasm") ? wasmURL : path
+        };
+
+        statusText.innerText = "Engine ready! Launching...";
+
+        const script = document.createElement('script');
+        script.src = "renpy.js";
+        document.body.appendChild(script);
+
+    } catch (e) {
+        statusText.innerHTML = `<span style="color:red">Stitch Error: ${e.message}</span>`;
+    }
+})();
   </script>
   <script src="renpy-pre.js"></script>
-  <script async type="text/javascript" src="renpy.js"></script>
 </body>
 
 </html>
