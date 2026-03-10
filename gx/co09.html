@@ -1,267 +1,212 @@
 <!doctype html>
-<html lang="en-us">
+    <html lang=en-us>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Class of '09</title>
-  <script src="/coi-serviceworker.js"></script>
-  <base href="https://fastly.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
-  <link rel="icon" href="icons/icon-72x72.png" sizes="72x72" type="image/png" />
-  <link rel="icon" href="icons/icon-96x96.png" sizes="96x96" type="image/png" />
-  <link rel="icon" href="icons/icon-128x128.png" sizes="128x128" type="image/png" />
-  <link rel="icon" href="icons/icon-144x144.png" sizes="144x144" type="image/png" />
-  <link rel="icon" href="icons/icon-152x152.png" sizes="152x152" type="image/png" />
-  <link rel="icon" href="icons/icon-192x192.png" sizes="192x192" type="image/png" />
-  <link rel="icon" href="icons/icon-384x384.png" sizes="384x384" type="image/png" />
-  <link rel="icon" href="icons/icon-512x512.png" sizes="512x512" type="image/png" />
-  <!-- ios support -->
-  <link rel="apple-touch-icon" href="icons/icon-72x72.png" sizes="72x72" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-96x96.png" sizes="96x96" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-128x128.png" sizes="128x128" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-144x144.png" sizes="144x144" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-152x152.png" sizes="152x152" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-192x192.png" sizes="192x192" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-384x384.png" sizes="384x384" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-512x512.png" sizes="512x512" type="image/png" />
+    <head>
+        <base href="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/class-of-09/">
+        <meta charset=utf-8>
+        <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
+        <title>Class of '09</title>
+        <meta content="width=device-width,initial-scale=1" name=viewport>
+        <link href=icons/icon.png rel=icon sizes=72x72 type=image/png>
+        <meta content=#000 name=theme-color>
+        <style>
+            html {
+                background: #444;
+                font-family: sans-serif
+            }
 
-  <meta name="theme-color" content="#000" />
+            #canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #000;
+                border: 0 none
+            }
 
-  <style>
-    html {
-      background: #444;
-      font-family: sans-serif;
-    }
+            .visible {
+                visibility: visible;
+                opacity: 1;
+                transition: opacity .1s linear
+            }
 
-    body, html {
-      overscroll-behavior: none;
-    }
+            .hidden {
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0s .25s, opacity .25s linear
+            }
 
-    #canvas, #overlayDiv {
-      position: absolute;
-      top: 0px;
-      left: 0px;
+            #inputDiv,
+            #statusDiv {
+                background: rgba(0, 0, 0, .75);
+                width: 50%;
+                margin: auto;
+                min-width: 340px;
+                padding: 10px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                border-radius: 0 0 5px 5px
+            }
 
-      width: 100%;
-      height: 100%;
+            #statusTextDiv {
+                overflow: auto;
+                max-height: 40vh;
+                color: #ccc;
+                font-size: 14px
+            }
 
-      border: 0 none;
-    }
+            #statusProgress {
+                display: none;
+                width: 100%
+            }
 
-    #canvas {
-      background: #000;
-    }
+            #inputDiv {
+                width: 65%;
+                padding-left: 10px;
+                padding-right: 20px
+            }
 
-    .visible {
-      visibility: visible;
-      opacity: 1.0;
-      transition: opacity .1s linear;
-    }
+            #inputPrompt {
+                color: #eee;
+                font-size: 150%;
+                margin-bottom: 1em;
+                margin-top: 1em
+            }
 
-    .hidden {
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0s .25s, opacity .25s linear;
-    }
+            #inputText {
+                width: 100%;
+                font-size: 175%;
+                padding: 5px;
+                background: inherit;
+                color: #eee
+            }
 
-    #statusDiv, #inputDiv {
-      background: rgba(0, 0, 0, 0.75);
-      width: 50%;
-      margin: auto;
-      min-width: 340px;
-      padding: 10px;
+            #inputText:focus {
+                color: #fff
+            }
 
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+            #ContextContainer {
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: #fff
+            }
 
-      border-radius: 0 0 5px 5px;
-    }
+            #ContextContainer.shown {
+                background: rgba(0, 0, 0, .5);
+                border-radius: 0 0 5px 0
+            }
 
-    #statusTextDiv {
-      overflow: auto;
-      max-height: 40vh;
-      color: #ccc;
-      font-size: 14px;
-    }
+            #ContextButton {
+                text-decoration: none;
+                color: #d3d3d3;
+                font-size: xx-large;
+                cursor: pointer;
+                user-select: none;
+                -moz-user-select: none;
+                padding: 10px 10px;
+                opacity: .75
+            }
 
-    #statusProgress {
-      display: none;
-      width: 100%;
-    }
+            #ContextButton:focus {
+                outline: 0;
+                color: #fff;
+                opacity: 1
+            }
 
-    #inputDiv {
-      width: 65%;
-      padding-left: 10px;
-      padding-right: 20px;
-    }
+            #ContextMenu a {
+                text-decoration: none;
+                color: #d3d3d3;
+                background: #444;
+                height: 48px;
+                width: 250px;
+                border-radius: 5px;
+                border: 1px solid #d3d3d3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 5px 5px;
+                opacity: 1
+            }
 
-    #inputPrompt {
-      color: #eee;
-      font-size: 150%;
-      margin-bottom: 1em;
-      margin-top: 1em;
+            #ContextMenu a:hover {
+                text-decoration: none;
+                background: #666;
+                color: #fff
+            }
 
-    }
+            #presplash {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                margin: auto;
+                width: 100%;
+                height: 100%;
+                object-fit: contain
+            }
+        </style>
+    </head>
 
-    #inputText {
-      width: 100%;
-      font-size: 175%;
-      padding: 5px;
-      background: inherit;
-      color: #eee;
-    }
+    <body>
+        <script>
+            function mergeFiles(fileParts) {
+                return new Promise((resolve, reject) => {
+                    let buffers = [];
+    
+                    function fetchPart(index) {
+                        if (index >= fileParts.length) {
+                            let mergedBlob = new Blob(buffers);
+                            let mergedFileUrl = URL.createObjectURL(mergedBlob);
+                            resolve(mergedFileUrl);
+                            return;
+                        }
+                        fetch(fileParts[index]).then((response) => response.arrayBuffer()).then((data) => {
+                            buffers.push(data);
+                            fetchPart(index + 1);
+                        }).catch(reject);
+                    }
+                    fetchPart(0);
+                });
+            }
+    
+            function getParts(file, start, end) {
+                let parts = [];
+                for (let i = start; i <= end; i++) {
+                    parts.push(file + ".part" + i);
+                }
+                return parts;
+            }
+            mergeFiles(getParts("game.zip", 1, 2, 3)).then(async url => {
+                window.gameZipUrl = url;
+                let renpypre = document.createElement("script");
+                renpypre.src = "https://cdn.jsdelivr.net/gh/mysticful@main/class-of-09/renpy-pre.js"
+                let renpy = document.createElement("script");
+                renpy.src = "https://cdn.jsdelivr.net/gh/mysticful@main/class-of-09/renpy.js"
+                document.body.appendChild(renpypre);
+                document.body.appendChild(renpy);
+            });
+        </script>
+        <canvas id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas><img id=presplash>
+        <div id=ContextContainer><a id=ContextButton>≡</a><br>
+            <div id=ContextMenu style=display:none><input id=ID_SavegamesImport accept=application/zip onchange=onSavegamesImport(this) style=display:none type=file><a href="javascript:document.getElementById('ID_SavegamesImport').click();">Import Saves</a><a href=javascript:onSavegamesExport();>Export Saves</a><a href="javascript:FSDownload('/log.txt', 'text/plain');">Download Log</a><a href=https://www.renpy.org/ target=_blank>Powered by Ren'Py</a></div>
+        </div>
+        <div id=statusDiv class=hidden>
+            <div id=statusTextDiv></div><progress id=statusProgress max=100 value=0></progress>
+        </div>
+        <div id=inputDiv class=hidden>
+            <form id=inputForm>
+                <div id=inputPrompt></div><input id=inputText>
+            </form>
+        </div>
+        <script>
+            navigator.serviceWorker && (navigator.serviceWorker.controller || navigator.serviceWorker.register("./service-worker.js", {
+                updateViaCache: "all"
+            }))
+        </script>
+    </body>
 
-    #inputText:focus {
-      color: #ffffff;
-    }
-
-    #ContextContainer {
-      position: absolute;
-      left: 0px;
-      top: 0px;
-      color: white;
-    }
-
-    #ContextContainer.shown {
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 0px 0px 5px 0px;
-    }
-
-    #ContextButton {
-      text-decoration: none;
-      color: lightgrey;
-      font-size: xx-large;
-      cursor: pointer;
-      user-select: none;
-      -moz-user-select: none;
-      padding: 10px 10px;
-      opacity: .75;
-    }
-
-    #ContextButton:focus {
-      outline: none;
-      color: #ffffff;
-      opacity: 1.0;
-    }
-
-    #ContextMenu a {
-      text-decoration: none;
-      color: lightgrey;
-      background: #444;
-      height: 48px;
-      width: 250px;
-      border-radius: 5px;
-      border: 1px solid lightgrey;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 5px 5px;
-      opacity: 1.0;
-    }
-
-    #ContextMenu a:hover {
-      text-decoration: none;
-      background: #666666;
-      color: #ffffff
-    }
-
-    #presplash {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        margin: auto;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-  </style>
-
-</head>
-
-<body>
-  <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
-  <div id="overlayDiv"></div>
-
-  <img id="presplash" src="web-presplash.jpg">
-
-  <div id="ContextContainer">
-    <a id="ContextButton">&#8801;</a><br />
-    <div id="ContextMenu" style="display: none;">
-      <input id="ID_SavegamesImport" type="file" onchange="onSavegamesImport(this)" accept="application/zip"
-        style=display:none></input>
-      <a href="javascript:document.getElementById('ID_SavegamesImport').click();">Import Saves</a>
-      <a href="javascript:onSavegamesExport();">Export Saves</a>
-      <a href="javascript:FSDownload('/log.txt', 'text/plain');">Download Log</a>
-      <a href="https://www.renpy.org/" target="_blank">
-          Powered by Ren'Py
-      </a>
-      </span>
-    </div>
-  </div>
-
-  <div id="statusDiv" class="hidden">
-    <div id="statusTextDiv"></div>
-    <progress id="statusProgress" value="0" max="100"></progress>
-  </div>
-
-  <div id="inputDiv" class="hidden">
-    <form id="inputForm">
-      <div id="inputPrompt"></div>
-      <input id="inputText" type="text">
-    </form>
-  </div>
-
-  <script>
-     (async function() {
-    const statusText = document.getElementById('statusTextDiv');
-    document.getElementById('statusDiv').className = 'visible';
-
-    async function fetchAndStitch(baseName, totalParts) {
-        statusText.innerText = `Assembling ${baseName}...`;
-        const blobParts = [];
-        
-        for (let i = 1; i <= totalParts; i++) {
-            const partUrl = `${baseName}.part${i}`;
-            const response = await fetch(partUrl);
-            
-            if (!response.ok) throw new Error(`Could not find ${partUrl}`);
-            
-            blobParts.push(await response.arrayBuffer());
-            statusText.innerText = `Downloaded ${baseName} part ${i}/${totalParts}`;
-        }
-        
-        return new Blob(blobParts, { type: 'application/octet-stream' });
-    }
-
-    try {
-        const wasmBlob = await fetchAndStitch('renpy.wasm', 3);
-        const gameBlob = await fetchAndStitch('game.zip', 3);
-
-        const wasmURL = URL.createObjectURL(wasmBlob);
-        window.gameZipURL = URL.createObjectURL(gameBlob);
-
-        window.Module = {
-            locateFile: (path) => path.endsWith(".wasm") ? wasmURL : path
-        };
-
-        statusText.innerText = "Engine ready! Launching...";
-
-        const script = document.createElement('script');
-        script.src = "renpy.js";
-        document.body.appendChild(script);
-
-    } catch (e) {
-        statusText.innerHTML = `<span style="color:red">Stitch Error: ${e.message}</span>`;
-    }
-})();
-  </script>
-  <script src="renpy-pre.js"></script>
-</body>
-
-</html>
+    </html>
