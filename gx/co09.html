@@ -183,14 +183,14 @@
             mergeFiles(getParts("game.zip", 1, 2, 3)).then(async url => {
                 window.gameZipUrl = url;
                 let renpypre = document.createElement("script");
-                renpypre.src = "https://cdn.jsdelivr.net/gh/mysticful@main/class-of-09/renpy-pre.js"
+                renpypre.src = "https://cdn.jsdelivr.net/gh/mysticful/class-of-09@main/renpy-pre.js"
                 let renpy = document.createElement("script");
-                renpy.src = "https://cdn.jsdelivr.net/gh/mysticful@main/class-of-09/renpy.js"
+                renpy.src = "https://cdn.jsdelivr.net/gh/mysticful/class-of-09@main/renpy.js"
                 document.body.appendChild(renpypre);
                 document.body.appendChild(renpy);
             });
         </script>
-        <canvas id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas><img id=presplash>
+        <canvas id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas><img id=presplash src="">
         <div id=ContextContainer><a id=ContextButton>≡</a><br>
             <div id=ContextMenu style=display:none><input id=ID_SavegamesImport accept=application/zip onchange=onSavegamesImport(this) style=display:none type=file><a href="javascript:document.getElementById('ID_SavegamesImport').click();">Import Saves</a><a href=javascript:onSavegamesExport();>Export Saves</a><a href="javascript:FSDownload('/log.txt', 'text/plain');">Download Log</a><a href=https://www.renpy.org/ target=_blank>Powered by Ren'Py</a></div>
         </div>
