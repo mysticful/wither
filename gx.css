@@ -14,6 +14,7 @@ body {
       font-family: "Prompt";
       text-shadow: 0 0 8px #ffffff;
     font-size: 41px;
+  font-style: italic;
 }
 
 .bttn {
@@ -36,7 +37,7 @@ body {
     justify-content: center;
     align-items: center;
   gap: 10px;
-    font-size: 16px;
+    font-size: 12px;
     font-style: italic;
     padding: 14px;
     font-family: "Prompt";
