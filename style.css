@@ -17,10 +17,10 @@ html,body {
 #title {
   font-size: 2.2em;
   margin-bottom: 10px;
-  color: #ff88dd;
-  font-family: "Georgia", serif;
-  text-shadow: 0 0 8px #ff80c0;
-  text-decoration: underline;
+  color: #ffffff;
+  font-family: "Prompt";
+  text-shadow: 0 0 8px #ffffff;
+  font-style: italic;
   font-size: 41px;
 }
 
