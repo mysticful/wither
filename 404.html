@@ -1,0 +1,10 @@
+<script>
+    // this script is meant for blooket.com links/testing them out.
+  const path = window.location.pathname;
+  if (path.includes('/gs/')) {
+    const encodedData = path.split('/gs/')[1].replace('/', '');
+    const decodedUrl = atob(encodedData);
+
+    window.location.href = '/index.html?target=' + decodedUrl;
+  }
+</script>
