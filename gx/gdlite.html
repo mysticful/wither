@@ -1,19 +1,23 @@
-<!DOCTYPE html>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L7856P3VNT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L7856P3VNT');
+</script><!DOCTYPE html>
+
+
+<!-- Ultimate Game Stash file--> 
+<!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
+
+
 <html lang="en-US">
 
 <head>
-    
-    
-    <script>
-        window.dataLayer = window.dataLayer || [];
+              <script src="/js/mobile.js"></script>
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-');
-    </script>
-    <base href="https://raw.githack.com/genizy/google-class/main/gdlite/">
+  <base href="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/gdlite/">
     <title>Geometry Dash</title>
     <link rel="icon" type="image/png" href="https://e3334afd.cf-nate.pages.dev/0/g/geodash/game/splash.png">
     <meta name="description" content="Play Geometry Dash Lite Online For Free on Chromebook, PC, Windows, Desktop in Chrome and modern browsers.">
@@ -183,6 +187,18 @@
                 <div class="posbox"><img class="box_process" src="image/process_bar_front.png"></div>
             </div>
         </div>
+        <script>
+      window.fileMergerConfig = {
+        files: [
+          { name: 'GeometryDashLite.data.unityweb', parts: 2 },
+          { name: 'GeometryDashLite.wasm.code.unityweb', parts: 1 },
+          { name: 'GeometryDashLite.wasm.framework.unityweb', parts: 1 },
+        ],
+        basePath: 'Build/',
+        debug: true
+      };  
+      </script>
+    <script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@ac5cdfc0042aca584e72619375b4aca948a9243c/merge.js"></script>
         <script src="Build/UnityLoader.js"></script>
         <script>
             var gameInstance = UnityLoader.instantiate("gameContainer", "Build/GeometryDashLite.json", {
@@ -226,6 +242,7 @@
                 }, 1000);
             });
         </script>
+        
         <script src="themes/geometrydashlite.io/rs/js/jquery-3.4.1.min.js"></script>
         <script>
             function ToggleInfo() {
