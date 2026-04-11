@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <base href="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/whosyourdaddy/">
+    <base href="https://cdn.jsdelivr.net/gh/mysticful/web-port@latest/whosyourdaddy/">
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Who's Your Daddy?</title>
@@ -60,24 +60,40 @@
             return URL.createObjectURL(mergedBlob);
         }
 
-        (async () => {
-            const dataParts = Array.from({length: 6}, (_, i) => `daddyreeyuki.data.part${i + 1}`);
-            const wasmParts = Array.from({length: 3}, (_, i) => `daddyreeyuki.wasm.part${i + 1}`);
+       (async () => {
+    const loadingText = document.querySelector("#loading-text");
+    
+    const cdnBase = "https://cdn.jsdelivr.net/gh/mysticful/web-port@latest/whosyourdaddy/Build/";
 
-            const [dataUrl, wasmUrl] = await Promise.all([
-                mergeFiles(dataParts),
-                mergeFiles(wasmParts)
-            ]);
+    const dataParts = Array.from({length: 6}, (_, i) => `${cdnBase}daddyreeyuki.data.part${i + 1}`);
+    const wasmParts = Array.from({length: 3}, (_, i) => `${cdnBase}daddyreeyuki.wasm.part${i + 1}`);
 
-            const config = {
-                dataUrl: dataUrl,
-                frameworkUrl: "daddyreeyuki.framework.js",
-                codeUrl: wasmUrl,
-                streamingAssetsUrl: "StreamingAssets",
-                companyName: "Joe Williams",
-                productName: "Who's Your Daddy",
-                productVersion: "1.0",
-            };
+    async function fetchWithRetry(url) {
+        await new Promise(r => setTimeout(r, 100));
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error(`CDN blocked ${url.split('/').pop()} (Status: ${resp.status})`);
+        return await resp.arrayBuffer();
+    }
+
+    try {
+        loadingText.textContent = "FETCHING DATA FROM CDN...";
+        
+        const dataBuffers = await Promise.all(dataParts.map(url => fetchWithRetry(url)));
+        loadingText.textContent = "FETCHING WASM FROM CDN...";
+        const wasmBuffers = await Promise.all(wasmParts.map(url => fetchWithRetry(url)));
+
+        const dataUrl = URL.createObjectURL(new Blob(dataBuffers));
+        const wasmUrl = URL.createObjectURL(new Blob(wasmBuffers));
+
+        const config = {
+            dataUrl: dataUrl,
+            frameworkUrl: `${cdnBase}daddyreeyuki.framework.js`,
+            codeUrl: wasmUrl,
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "???????",
+            productName: "whos your daddy",
+            productVersion: "1.0",
+        };
 
             const container = document.querySelector("#unity-container");
             const canvas = document.querySelector("#unity-canvas");
@@ -91,18 +107,23 @@
             window.addEventListener('resize', resizeCanvas);
             resizeCanvas();
 
-            const script = document.createElement("script");
-            script.src = "daddyreeyuki.loader.js"; // Matches your screenshot
-            script.onload = () => {
-                createUnityInstance(canvas, config, (progress) => {
-                    document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-                }).then((unityInstance) => {
-                    loadingText.remove();
-                    document.querySelector("#unity-loading-bar").style.display = "none";
-                }).catch(alert);
-            };
-            document.body.appendChild(script);
-        })();
+        const loaderScript = document.createElement("script");
+        loaderScript.src = `${cdnBase}daddyreeyuki.loader.js`;
+        loaderScript.onload = () => {
+            createUnityInstance(document.querySelector("#unity-canvas"), config, (progress) => {
+                loadingText.textContent = `STARTING ENGINE: ${Math.round(progress * 100)}%`;
+            }).then(() => {
+                loadingText.remove();
+            });
+        };
+        document.body.appendChild(loaderScript);
+
+    } catch (err) {
+        loadingText.style.color = "red";
+        loadingText.textContent = err.message;
+        console.error(err);
+    }
+})();
     </script>
   </body>
 </html>
