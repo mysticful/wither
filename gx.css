@@ -271,6 +271,7 @@ input {
 #gxContainer{
 width:100%;
 margin-top:20px;
+position: relative;
 }
 
 #gxFrame{
@@ -281,7 +282,7 @@ border:none;
 
 #sidebarad1,
 #sidebarad2 {
-  position: fixed;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 160px;
