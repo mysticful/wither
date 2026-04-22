@@ -6,7 +6,7 @@
   <title>calculator - Google Search</title>   
       <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">   
       <script src="https://cdn.jsdelivr.net/npm/particlesjs@2.2.3/dist/particles.min.js"></script>
- 
+ <script src="/main.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
@@ -140,6 +140,71 @@ color: #ffffff;
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+
+#sidebar {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 80px;
+  background-color: #1e040f;
+  border-radius: 0 24px 24px 0;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.1;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+#navigation {
+  height: 100%;
+  width: 100%;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.icon-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-item {
+  display: block;
+  color: white;
+  font-size: 32px;
+  text-align: center;
+  text-decoration: none;
+  padding: 2.5rem 0;
+  transition: transform 0.2s ease-out, color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.icon-item:hover {
+  transform: scale(1.1);
+}
+
   </style>
 </head>
 <body>
