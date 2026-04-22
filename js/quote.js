@@ -49,7 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		"if u see this do ur classwork bro get them grades up",
 		"best site btw",
 		"hotline miami 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀",
-		"wither v2 takes about ~6 gb on my computer"
+		"wither v2 takes about 12 gb on my computer",
+		"carlos when le deltarune r34",
+		"new awp update",
+		"yall fw danganronpa?"
 	];
 
 	var howmany = tell.length;
